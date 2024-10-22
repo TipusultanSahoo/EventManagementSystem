@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Event Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #212529; /* Dark background */
+            color: #f8f9fa; /* Light text */
+        }
+
+        h2 {
+            margin-bottom: 2rem;
+        }
+
+        .event-details {
+            background-color: #343a40; /* Darker background for details */
+            border-radius: 10px; /* Rounded corners */
+            padding: 20px;
+        }
+
+        .btn-warning {
+            background-color: #ffc107; /* Yellow color */
+            border: none; /* No border */
+        }
+
+        .btn-warning:hover {
+            background-color: #e0a800; /* Darker yellow on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Event Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="create-event.html">Create Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="discover-events.html">Discover Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="logout.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="text-center text-warning">Event Details</h2>
+
+        <div class="event-details">
+            <h5 class="text-warning" id="eventTitle">Music Concert</h5>
+            <p id="eventDate">Date: 2024-12-01</p>
+            <p id="eventLocation">Location: New York</p>
+            <p id="eventDescription">Join us for an unforgettable evening of music and entertainment featuring top artists.</p>
+
+            <h5 class="text-warning">Buy Tickets</h5>
+            <p>Price: $50</p>
+            <a href="payment.html" class="btn btn-warning">Proceed to Payment</a>
+        </div>
+    </div>
+
+    <script>
+        // Extract the event from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventName = urlParams.get('event');
+
+        // Placeholder event details (in a real application, this would be fetched from a database)
+        const eventDetails = {
+            'music-concert': {
+                title: 'Music Concert',
+                date: '2024-12-01',
+                location: 'New York',
+                description: 'Join us for an unforgettable evening of music and entertainment featuring top artists.',
+                price: '$50'
+            },
+            'tech-expo': {
+                title: 'Technology Expo',
+                date: '2024-11-15',
+                location: 'San Francisco',
+                description: 'Explore the latest innovations in technology and connect with industry leaders.',
+                price: '$30'
+            }
+        };
+
+        // Update the DOM with event details
+        if (eventDetails[eventName]) {
+            document.getElementById('eventTitle').innerText = eventDetails[eventName].title;
+            document.getElementById('eventDate').innerText = `Date: ${eventDetails[eventName].date}`;
+            document.getElementById('eventLocation').innerText = `Location: ${eventDetails[eventName].location}`;
+            document.getElementById('eventDescription').innerText = eventDetails[eventName].description;
+        }
+    </script>
+</body>
+</html>
